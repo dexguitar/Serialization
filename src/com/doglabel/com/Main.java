@@ -3,7 +3,7 @@ package com.doglabel.com;
 public class Main {
 
     public static void main(String[] args) {
-//        1. Create 4 movies
+//        1. Create a few movies
         Movie m1 = new Movie("The Avengers", "Robert Downey Jr.");
         Movie m2 = new Movie("Terminator", "Arnold Schwarzenegger");
         Movie m3 = new Movie("The Predator", "Arnold Schwarzenegger");

@@ -9,7 +9,7 @@ public class MovieCollection implements Serializable {
     public MovieCollection() {
         this.movies = new ArrayList<>();
     }
-
+//    Show all movies
     public String showAll() {
         StringBuilder sb = new StringBuilder();
         int count = 1;
@@ -19,11 +19,11 @@ public class MovieCollection implements Serializable {
         }
         return sb.toString();
     }
-
+//    Add movie
     public void addMovie(Movie m) {
         movies.add(m);
     }
-
+//    Edit movie
     public void editMovie(String title, String cast) {
         Movie movie = null;
         for (Movie m: movies) {
@@ -34,7 +34,7 @@ public class MovieCollection implements Serializable {
         movie.setTitle(title);
         movie.setCast(cast);
     }
-
+//    Delete movie
     public void deleteMovie(String title) {
         for (Movie m: movies) {
             if (m.getTitle().equals(title)) {
@@ -44,7 +44,7 @@ public class MovieCollection implements Serializable {
             }
         }
     }
-
+//    Write
     public void writeToFile(Object obj) {
         try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("movies.bin"))) {
             oos.writeObject(obj);
@@ -54,7 +54,7 @@ public class MovieCollection implements Serializable {
 
         System.out.println("Write successful!");
     }
-
+//    Read
     public void readFile() {
         try {
             ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream("movies.bin"));
