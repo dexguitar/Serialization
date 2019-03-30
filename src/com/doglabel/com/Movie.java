@@ -1,17 +1,18 @@
 package com.doglabel.com;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 public class Movie implements Serializable {
-// Props
+
     private String title;
-    private String cast;
-// Constr
-    public Movie(String title, String cast) {
+    public ArrayList<Actor> cast;
+
+    public Movie(String title, ArrayList<Actor> cast) {
         this.title = title;
         this.cast = cast;
     }
-// Getters and setters
+
     public String getTitle() {
         return title;
     }
@@ -20,12 +21,16 @@ public class Movie implements Serializable {
         this.title = title;
     }
 
-    public void setCast(String cast) {
+    public void setCast(ArrayList<Actor> cast) {
         this.cast = cast;
     }
-//    toStr
+
     @Override
     public String toString() {
-        return title + " << *** >> " + cast;
+        StringBuilder sb = new StringBuilder();
+        for (Actor actor: cast) {
+            sb.append(actor.toString() + " * ");
+        }
+        return title + " << *** >> " + sb.toString();
     }
 }
