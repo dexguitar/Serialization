@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 public class Actor implements Serializable {
 
-    String name;
+    private String name;
 
     public Actor(String name) {
         this.name = name;
