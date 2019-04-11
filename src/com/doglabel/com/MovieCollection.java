@@ -14,7 +14,7 @@ public class MovieCollection implements Serializable {
         StringBuilder sb = new StringBuilder();
         int count = 1;
         for (Movie m: movies) {
-            sb.append(String.valueOf(count) + ": " + m + "\n");
+            sb.append(String.valueOf(count) + ": " + m);
             count++;
         }
         return sb.toString();
@@ -24,14 +24,15 @@ public class MovieCollection implements Serializable {
         movies.add(m);
     }
 
-    public void editMovie(String title, String cast) {
+    public void editMovie(String title, ArrayList<Actor> cast) {
         Movie movie = null;
+
         for (Movie m: movies) {
             if (m.getTitle().equals(title)) {
                 movie = m;
             }
         }
-        movie.setTitle(title);
+
         movie.setCast(cast);
     }
 
@@ -45,8 +46,8 @@ public class MovieCollection implements Serializable {
         }
     }
 
-    public void writeToFile(Object obj) {
-        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("movies.bin"))) {
+    public void writeToFile(Object obj, String filePath) {
+        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(filePath))) {
             oos.writeObject(obj);
         } catch (IOException e) {
             e.printStackTrace();
@@ -55,9 +56,9 @@ public class MovieCollection implements Serializable {
         System.out.println("Write successful!");
     }
 
-    public void readFile() {
+    public void readFile(String filePath) {
         try {
-            ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream("movies.bin"));
+            ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream(filePath));
             MovieCollection mc;
             mc = (MovieCollection) objectInputStream.readObject();
             movies = mc.movies;
