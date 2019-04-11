@@ -53,6 +53,6 @@ class MovieCollectionTest {
 
         mc.readFile("movies.bin");
 
-        assertEquals("The Avengers << *** >> Robert Downey Jr. * ", mc.movies.get(0));
+        assertEquals("The Avengers << *** >> Robert Downey Jr. * ", mc.movies.get(0).toString());
     }
 }
